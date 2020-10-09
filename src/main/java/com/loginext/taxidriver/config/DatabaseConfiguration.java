@@ -1,6 +1,8 @@
 package com.loginext.taxidriver.config;
 
 import com.opentable.db.postgres.embedded.EmbeddedPostgres;
+import com.zaxxer.hikari.HikariConfig;
+import com.zaxxer.hikari.HikariDataSource;
 import org.springframework.boot.autoconfigure.flyway.FlywayDataSource;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.orm.jpa.EntityManagerFactoryBuilder;
@@ -9,7 +11,6 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
 import org.springframework.context.annotation.Profile;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
-import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 
 import javax.sql.DataSource;
@@ -35,12 +36,12 @@ public class DatabaseConfiguration {
         @Primary
         @ConfigurationProperties(prefix = "datasource.postgres")
         DataSource db(){
-            DriverManagerDataSource dataSource = new DriverManagerDataSource();
+            HikariConfig dataSource = new HikariConfig();
             dataSource.setDriverClassName("org.postgresql.Driver");
-            dataSource.setUrl(System.getenv("DB_CONN_URL"));
+            dataSource.setJdbcUrl(System.getenv("DB_CONN_URL"));
             dataSource.setUsername(System.getenv("DB_USERNAME"));
             dataSource.setPassword(System.getenv("DB_PASSWORD"));
-            return  dataSource;
+            return  new HikariDataSource(dataSource);
         }
     }
 
