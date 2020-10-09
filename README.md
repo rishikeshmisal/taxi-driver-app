@@ -13,8 +13,6 @@ You can build the application using
 mvn clean install -DskipTests
 ```
 
-- If the project is zipped, unzip the file and perform the following
-
 - There are two ways to run the project
      - To create an embedded postgres server within the application if a
      configured postgres database server is not readily available.
