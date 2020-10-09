@@ -1,0 +1,133 @@
+{
+	"info": {
+		"_postman_id": "e6f6cd39-3ddf-49fd-9b4e-215f8324f0cc",
+		"name": "Tax-Driver-App",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Register USER",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"userName\":\"sandhya\",\n    \"currentLatitude\": 19.047255,\n    \"currentLongitude\": 72.881280\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{local}}:8080/api/v1/user/register",
+					"host": [
+						"{{local}}"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"user",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Request Driver for user",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"userName\":\"sandai123\",\n    \"currentLatitude\": 22.000,\n    \"currentLongitude\": 56.820\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{local}}:8080/api/v1/user/sandai123/assign-driver",
+					"host": [
+						"{{local}}"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"user",
+						"sandai123",
+						"assign-driver"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Driver Registration",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"driverName\":\"driver12\",\n    \"currentLatitude\": 18.916312,\n    \"currentLongitude\": 72.826713\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{local}}:8080/api/v1/driver/register",
+					"host": [
+						"{{local}}"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"driver",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "All Driver status",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{local}}:8080/api/v1/drivers/status?page=1&pageSize=50",
+					"host": [
+						"{{local}}"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"drivers",
+						"status"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "1"
+						},
+						{
+							"key": "pageSize",
+							"value": "50"
+						}
+					]
+				},
+				"description": "Response is paginated."
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
